@@ -1,0 +1,6 @@
+{
+    "MONGODBURI": "mongodb+srv://ayushadmin:adminpass@devconnector-1ekfi.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "bd041591e8631984d5c4",
+    "githubSecret": "37ef106126654d16d50e6f32c69c5963b8de4cbf"
+}
