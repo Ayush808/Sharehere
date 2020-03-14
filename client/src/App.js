@@ -5,6 +5,12 @@ import Landing from './components/layout/Landing'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Alert from './components/layout/Alert'
+import Dashboard from './components/dashboard/Dashboard'
+import CreateProfile from './components/profile-form/CreateProfile'
+import EditProfile from './components/profile-form/EditProfile'
+import AddExperience from './components/profile-form/AddExperience'
+import AddEducation from './components/profile-form/AddEducation'
+import PrivateRoute from './components/routing/PrivateRoute'
 import loadUser from './actions/auth'
 
 // Provider for connecting react with redux
@@ -41,6 +47,11 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+              <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+              <PrivateRoute exact path="/add-experience" component={AddExperience} />
+              <PrivateRoute exact path="/add-education" component={AddEducation} />
             </Switch>
           </section>
         </Fragment>
@@ -49,4 +60,7 @@ const App = () => {
   )
 }
 
+
+//And then for the dashboard we want to protect that so we're going to use private route like that instead
+//So any wrote that we want to try to force the user to be logged in for we can simply use private route instead of route.
 export default App

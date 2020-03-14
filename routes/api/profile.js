@@ -4,6 +4,7 @@ const request = require('request')
 const config = require('config')
 const Profile = require('../../models/Profile')
 const User = require('../../models/User')
+const Post = require('../../models/Post')
 const auth = require('../../middleware/auth')
 const {
     check,
@@ -41,11 +42,11 @@ router.get('/me', auth, async (req, res) => {
 // @access  PRIVATE
 router.post('/', [auth, [
     check('status', 'Status is Required')
-    .not()
-    .isEmpty(),
+        .not()
+        .isEmpty(),
     check('skills', 'Skills are mandatory')
-    .not()
-    .isEmpty()
+        .not()
+        .isEmpty()
 ]], async (req, res) => {
 
     const errors = validationResult(req);
@@ -182,7 +183,9 @@ router.get('/user/:user_id', async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
     try {
-        // @todo - remove the users post
+        //  Remove the users post
+        await Post.deleteMany({ user: req.user.id })
+
 
         //  remove the user profile
         await Profile.findOneAndRemove({
@@ -210,8 +213,8 @@ router.delete('/', auth, async (req, res) => {
 // @access  PRIVATE
 
 router.put('/experience', [auth, [check('title', 'Title is mandatory').not().isEmpty(),
-    check('company', 'Company is mandatory').not().isEmpty(),
-    check('from', 'from field is mandatory').not().isEmpty()
+check('company', 'Company is mandatory').not().isEmpty(),
+check('from', 'from field is mandatory').not().isEmpty()
 ]], async (req, res) => {
 
     const errors = validationResult(req)
@@ -295,9 +298,9 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
 // @access  PRIVATE
 
 router.put('/education', [auth, [check('school', 'School is mandatory').not().isEmpty(),
-    check('degree', 'Degree is mandatory').not().isEmpty(),
-    check('fieldofstudy', 'Field of Study is mandatory').not().isEmpty(),
-    check('from', 'from field is mandatory').not().isEmpty()
+check('degree', 'Degree is mandatory').not().isEmpty(),
+check('fieldofstudy', 'Field of Study is mandatory').not().isEmpty(),
+check('from', 'from field is mandatory').not().isEmpty()
 ]], async (req, res) => {
 
     const errors = validationResult(req)
