@@ -40,7 +40,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
             youtube: loading || !profile.social ? "" : profile.social.youtube,
             instagram: loading || !profile.social ? "" : profile.social.instagram
         })
-    }, [loading])  // useEffect jab jab chalega jab loading hogi
+    }, [loading, getCurrentProfile])  // useEffect jab jab chalega jab loading hogi
 
     const {
         company,

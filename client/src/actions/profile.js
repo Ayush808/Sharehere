@@ -27,6 +27,10 @@ export const getCurrentProfile = () => async dispatch => {
 // Get All User profile
 export const getProfiles = () => async dispatch => {
 
+    dispatch({
+        type: CLEAR_PROFILE
+    })
+
     try {
 
         const res = await axios.get("/api/profile")
@@ -240,7 +244,7 @@ export const deleteAccount = () => async dispatch => {
 
         try {
 
-            const res = await axios.delete('/api/profile')
+            await axios.delete('/api/profile')
 
             dispatch({ type: CLEAR_PROFILE })
             dispatch({ type: ACCOUNT_DELETED })
