@@ -84,7 +84,7 @@ router.post('/', [auth, [
     if (githubusername) ProfileFields.githubusername = githubusername
 
     if (skills) {
-        ProfileFields.skills = skills.split(' ').map(skill => skill.trim())
+        ProfileFields.skills = skills.split(',').map(skill => skill.trim())
     }
 
     //Build Socail Object
