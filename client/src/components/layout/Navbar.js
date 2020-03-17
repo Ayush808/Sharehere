@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import loadUser, { logout } from '../../actions/auth'
+import { logout } from '../../actions/auth'
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 

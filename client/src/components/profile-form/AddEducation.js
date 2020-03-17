@@ -79,6 +79,7 @@ const AddEducation = ({ addEducation, history }) => {
                         name="description"
                         cols="30"
                         rows="5"
+                        maxlength="35"
                         placeholder="Program Description"
                         value={description}
                         onChange={e => onChange(e)}
