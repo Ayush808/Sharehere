@@ -24,6 +24,8 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         </p>
         {
             profile != null ? <Fragment> <DashboardActions />
+                <Link to={`/profile/${user._id}`} className="btn btn-primary my-1"><i className="fas fa-user"> My Profile</i></Link>
+
                 <Experience experience={profile.experience} />
                 <Education education={profile.education} />
 
